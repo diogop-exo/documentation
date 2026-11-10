@@ -123,15 +123,15 @@ o campo :guilabel:`Formato da fatura eletrónica` como :guilabel:`Portugal (CIUS
     contacto a ser faturado. A definição no parceiro principal é o suficiente e aplica-se de forma
     transparente sempre que um documento é emitido para qualquer um dos seus contactos.
 
-GLN do comprador (Generix)
-------------------------------
-Alguns clientes com várias lojas, por exemplo cadeias de retalho, identificam cada loja pelo seu
-GLN (*Global Location Number*). Com a **Generix EDI** instalada, pode indicar o GLN de cada loja
-no campo :guilabel:`GLN do comprador`:
+GLN do cliente e do local de entrega (Generix)
+--------------------------------------------------
+Alguns clientes com várias lojas, por exemplo cadeias de retalho, identificam cada loja e cada
+local de entrega pelo seu GLN (*Global Location Number*). Com a **Generix EDI** instalada, o
+campo :guilabel:`GLN` fica visível em todos os contactos:
 
-#. Abra a ficha do contacto da loja que usa como cliente nas faturas.
+#. Abra a ficha do contacto: a loja que usa como cliente nas faturas, ou a morada de entrega.
 #. No separador :guilabel:`Vendas e Compras`, secção **Diversos**, preencha o campo
-   :guilabel:`GLN do comprador`.
+   :guilabel:`GLN`.
 #. Guarde a ficha.
 
 .. image:: e-invoicing/v18_edi_partner_buyer_gln.png
@@ -140,19 +140,27 @@ no campo :guilabel:`GLN do comprador`:
 O campo também aparece no formulário de cada contacto, no separador
 :guilabel:`Endereços e contactos` da ficha do parceiro principal.
 
-Quando o cliente da fatura tem o GLN do comprador preenchido, o ficheiro CIUS-PT identifica o
-comprador por esse GLN. Sem este campo, o ficheiro identifica o comprador pela
-:guilabel:`Referência` do parceiro principal.
+O ficheiro CIUS-PT usa o GLN de dois contactos da fatura:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Contacto da fatura
+     - O que o GLN identifica no ficheiro CIUS-PT
+   * - **Cliente**
+     - O comprador. Sem GLN, o ficheiro identifica o comprador pela :guilabel:`Referência` do
+       parceiro principal.
+   * - **Morada de entrega**
+     - O local de entrega.
+
+Se a fatura não tiver morada de entrega, o Odoo usa o cliente como local de entrega. Nesse caso,
+o mesmo GLN identifica o comprador e o local de entrega.
 
 .. important::
-    Ao contrário do formato da fatura eletrónica, o GLN do comprador **não é herdado** do parceiro
-    principal. Preencha-o em cada contacto que usa como cliente nas faturas. O GLN do parceiro
-    principal só é usado nas faturas emitidas ao próprio parceiro principal.
-
-.. note::
-    O GLN do comprador não substitui o GLN do local de entrega. O GLN do local de entrega
-    preenche-se no campo :guilabel:`GLN` da morada de entrega e continua a ser enviado no ficheiro
-    CIUS-PT.
+    Ao contrário do formato da fatura eletrónica, o GLN **não é herdado** do parceiro principal.
+    Preencha-o em cada contacto que usa nas faturas, como cliente ou como morada de entrega. O GLN
+    do parceiro principal só é usado nas faturas emitidas ao próprio parceiro principal.
 
 Verificação prévia do destinatário
 --------------------------------------
