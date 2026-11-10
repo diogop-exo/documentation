@@ -123,6 +123,37 @@ o campo :guilabel:`Formato da fatura eletrónica` como :guilabel:`Portugal (CIUS
     contacto a ser faturado. A definição no parceiro principal é o suficiente e aplica-se de forma
     transparente sempre que um documento é emitido para qualquer um dos seus contactos.
 
+GLN do comprador (Generix)
+------------------------------
+Alguns clientes com várias lojas, por exemplo cadeias de retalho, identificam cada loja pelo seu
+GLN (*Global Location Number*). Com a **Generix EDI** instalada, pode indicar o GLN de cada loja
+no campo :guilabel:`GLN do comprador`:
+
+#. Abra a ficha do contacto da loja que usa como cliente nas faturas.
+#. No separador :guilabel:`Vendas e Compras`, secção **Diversos**, preencha o campo
+   :guilabel:`GLN do comprador`.
+#. Guarde a ficha.
+
+.. image:: e-invoicing/v18_edi_partner_buyer_gln.png
+   :align: center
+
+O campo também aparece no formulário de cada contacto, no separador
+:guilabel:`Endereços e contactos` da ficha do parceiro principal.
+
+Quando o cliente da fatura tem o GLN do comprador preenchido, o ficheiro CIUS-PT identifica o
+comprador por esse GLN. Sem este campo, o ficheiro identifica o comprador pela
+:guilabel:`Referência` do parceiro principal.
+
+.. important::
+    Ao contrário do formato da fatura eletrónica, o GLN do comprador **não é herdado** do parceiro
+    principal. Preencha-o em cada contacto que usa como cliente nas faturas. O GLN do parceiro
+    principal só é usado nas faturas emitidas ao próprio parceiro principal.
+
+.. note::
+    O GLN do comprador não substitui o GLN do local de entrega. O GLN do local de entrega
+    preenche-se no campo :guilabel:`GLN` da morada de entrega e continua a ser enviado no ficheiro
+    CIUS-PT.
+
 Verificação prévia do destinatário
 --------------------------------------
 Antes de faturar, confirme que o NIF do parceiro está registado na plataforma Saphety: na ficha
